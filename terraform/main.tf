@@ -26,4 +26,5 @@ module "compute" {
   security_group_id = module.security.security_group_id
   key_name          = var.key_name
   public_key_path   = var.public_key_path
+  private_key_path  = var.private_key_path
 }

@@ -42,3 +42,8 @@ variable "public_subnet_cidr" {
   description = "CIDR block for the public subnet"
   type        = string
 }
+
+variable "private_key_path" {
+  description = "Path to the SSH private key used by Ansible"
+  type        = string
+}

@@ -1,0 +1,45 @@
+---
+- name: Configure InfraPro Developer VM
+  hosts: developer
+  become: true
+
+  tasks:
+    - name: Wait for the server to become reachable
+      ansible.builtin.wait_for_connection:
+        timeout: 300
+        delay: 10
+
+    - name: Update apt package cache
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Install Java 17
+      ansible.builtin.apt:
+        name: openjdk-17-jdk
+        state: present
+
+    - name: Install Maven
+      ansible.builtin.apt:
+        name: maven
+        state: present
+
+    - name: Verify Java installation
+      ansible.builtin.command:
+        cmd: java -version
+      register: java_version
+      changed_when: false
+
+    - name: Verify Maven installation
+      ansible.builtin.command:
+        cmd: mvn -version
+      register: maven_version
+      changed_when: false
+
+    - name: Display Java version
+      ansible.builtin.debug:
+        var: java_version.stderr_lines
+
+    - name: Display Maven version
+      ansible.builtin.debug:
+        var: maven_version.stdout_lines

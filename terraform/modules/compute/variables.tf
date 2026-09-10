@@ -33,3 +33,8 @@ variable "public_key_path" {
   description = "Path to the SSH public key"
   type        = string
 }
+
+variable "private_key_path" {
+  description = "Path to the SSH private key used by Ansible"
+  type        = string
+}
