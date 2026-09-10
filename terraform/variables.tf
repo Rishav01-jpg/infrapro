@@ -27,3 +27,4 @@ variable "vpc_cidr" {
   description = "CIDR block for the InfraPro VPC"
   type        = string
 }
+
