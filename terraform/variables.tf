@@ -28,3 +28,17 @@ variable "vpc_cidr" {
   type        = string
 }
 
+variable "key_name" {
+  description = "Name of the SSH key pair used for the developer VM"
+  type        = string
+}
+
+variable "public_key_path" {
+  description = "Path to the SSH public key used for the developer VM"
+  type        = string
+}
+
+variable "public_subnet_cidr" {
+  description = "CIDR block for the public subnet"
+  type        = string
+}
