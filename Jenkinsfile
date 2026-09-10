@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Prepare Credentials') {
+        stage('Infrastructure') {
             steps {
                 withCredentials([
                     usernamePassword(
@@ -35,39 +35,14 @@ key_name           = "infrapro-jenkins-key"
 public_key_path    = "$WORKSPACE/infrapro-jenkins.pub"
 private_key_path   = "$SSH_KEY"
 EOFVARS
+
+                        cd terraform
+
+                        terraform init
+                        terraform validate
+                        terraform plan
+                        terraform apply -auto-approve
                     '''
-                }
-            }
-        }
-
-        stage('Terraform Init') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform init'
-                }
-            }
-        }
-
-        stage('Terraform Validate') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform validate'
-                }
-            }
-        }
-
-        stage('Terraform Plan') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform plan'
-                }
-            }
-        }
-
-        stage('Terraform Apply') {
-            steps {
-                dir('terraform') {
-                    sh 'terraform apply -auto-approve'
                 }
             }
         }
