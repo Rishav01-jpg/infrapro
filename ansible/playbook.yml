@@ -1,7 +1,8 @@
 ---
 - name: Configure InfraPro Developer VM
   hosts: developer
-  become: true
+    become: true
+  gather_facts: false
 
   tasks:
     - name: Wait for the server to become reachable
