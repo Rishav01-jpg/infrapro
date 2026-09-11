@@ -1,3 +1,5 @@
-## Project Summary & Evidence
+## 📋 Project Summary & Evidence
 
-[View Project Summary & Evidence](./infapro-project-summary%26evidence.html)
+A detailed project summary, architecture, automation flow, implementation details, and submission evidence are available here:
+
+👉 **[View Project Summary & Evidence](./project-summary-evidence.html)**
